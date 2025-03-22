@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basketball Data Analysis</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        input, button { padding: 10px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h1>Basketball Player Analysis</h1>
+    <input type="text" id="playerName" placeholder="Enter player name">
+    <button onclick="analyze()">Analyze</button>
+    <p id="result"></p>
+
+    <script>
+        function analyze() {
+            const playerName = document.getElementById('playerName').value;
+            fetch(`/analyze?player=${playerName}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('result').innerText = data;
+                });
+        }
+    </script>
+</body>
+</html>
